@@ -1,14 +1,27 @@
 <h1> Create an Article</h1>
+<h2>The following errors prevented the article from getting created</h2>
+<ul>
+<% if @article.errors.any? %>
+    <% @article.errors.full_messages.each do |msg| %>
+       <li> <%= msg%></li>
+    <% end %>
+<% end %>
+</ul>
+
 <%= form_for @article do |a|%>
+
   <p>
     <%= a.label :title%><br/>
     <%= a.text_field :title%>
   </p>
+
   <p>
     <%= a.label :description%><br/>
     <%= a.text_area :description%>
   </p>
+
   <p>
     <%= a.submit %>
   </p>
+
 <% end %>

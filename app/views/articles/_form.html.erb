@@ -8,22 +8,31 @@
 <% end %>
 
 
-<%= form_for @article do |a|%>
-
-  <p>
-    <%= a.label :title%><br/>
-    <%= a.text_field :title%>
-  </p>
-
-  <p>
-    <%= a.label :description%><br/>
-    <%= a.text_area :description%>
-  </p>
-
-  <p>
-    <%= a.submit %>
-  </p>
-
+<%= form_for @article do |a| %>
+  <div class="form-group row">
+    <div class="col-form-label col-sm-2">
+      <%= a.label :title %>
+    </div>
+    <div class=" col-sm-8">
+      <%= a.text_field :title, class: "form-control", placeholder: "Title of article", autofocus: true %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-form-label col-sm-2">
+      <%= a.label :description %>
+    </div>
+    <div class="col-sm-8">
+      <%= a.text_area :description, class: "form-control", rows: 10, placeholder: "Body of article" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-10 offset-sm-2">
+      <%= a.submit class: 'btn btn-dark btn-lg' %>
+    </div>
+  </div>
 <% end %>
-
-<%= link_to 'Back to articles listing', articles_path %>
+<div class="form-group row">
+  <div class=" col-sm-4 offset-sm-4">
+    [ <%= link_to 'Cancel and return to articles listing', articles_path %> ]
+  </div>
+</div>

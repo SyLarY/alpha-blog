@@ -12,17 +12,19 @@
       <li class="nav-item">
         <%= link_to 'Users', users_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Actions
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to 'New Article', new_article_path, class: "dropdown-item" %>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+      <% if logged_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Actions
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to 'New Article', new_article_path, class: "dropdown-item" %>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      <% end %>
       <li class="nav-item form-inline">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -30,10 +32,20 @@
     </ul>
 
     <form class="form-inline my-2 my-lg-0">
-      <% if logged_in? %>
-      <span class="navbar-text mx-2 text-white">
-      Hello, <%= current_user.username %>
-      </span>
+      <% if logged_in? %> 
+        <span class="mx-2">
+        <div class="dropdown">
+          <a class="dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Hellooo, <%= current_user.username %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to 'Edit Your Profile', edit_user_path(current_user), class: "dropdown-item" %>
+            <%= link_to 'View Your Profile', user_path(current_user), class: "dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+        </span>
         <%= link_to 'Log Out', logout_path, method: :delete, class: "btn btn-outline-light btn-sm"%>
       <% else %>
         <%= link_to 'Log In', login_path, class: "btn btn-outline-light btn-sm mr-1"%>

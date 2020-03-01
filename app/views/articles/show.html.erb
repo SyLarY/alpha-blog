@@ -1,7 +1,17 @@
 <h2 align="center"> <%= @article.title %></h2>
 <div class="card bg-light col-sm-8 offset-sm-2">
-    <h4 class="center description"><strong>Description:</strong></h4>
-    <hr>
+    <div class=" bg-light col-sm-4 offset-sm-4 mt-2 center">
+        <h5 class="card-title article-title">
+            <%= link_to gravatar_for(@article.user, size: 80), user_path(@article.user) %><br/>
+            <%= link_to @article.user.username, user_path(@article.user) %>
+        </h5>
+        <div class="">
+            <small><%= pluralize(@article.user.articles.count, 'article') %> </small>
+        </div>
+    </div>
+    <h4 class="center description">
+        <strong>Description:</strong>
+    </h4>        
      <%= simple_format(@article.description) %>
      <div class="article-actions">
         <%= link_to 'Edit article', edit_article_path(@article), class: "btn btn-sm btn-primary" %>

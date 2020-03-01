@@ -11,7 +11,7 @@ end
 #2. VALID_EMAIL_REGEX + format: {with: VALID_EMAIL_REGEX}
 
 class User < ApplicationRecord
-    has_many :articles
+    has_many :articles, dependent: :destroy
     before_save {self.email = email.downcase }
     validates :username,  presence: true, 
                 length: { minimum: 3, maximum:25 }, 

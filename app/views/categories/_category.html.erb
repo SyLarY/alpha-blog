@@ -1,0 +1,15 @@
+<div class="center">
+    <% obj.each do |category| %>
+    <div class="card bg-light col-sm-2 offset-5 mt-2">
+        <div class="card-title article-title">
+            <%= link_to "#{category.name}", category_path(category) %>
+        </div>
+        <div class="card-text">
+            <%= link_to 'Edit', edit_category_path(category),  class: "btn btn-sm btn-primary" %>
+            <%= link_to 'Delete', category_path(category), method: :delete,
+                                data: {confirm: "Are you sure?"}, 
+                                class: "btn btn-sm btn-danger" %>
+        </div>
+    </div>
+    <% end %>
+</div>

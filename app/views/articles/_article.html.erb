@@ -5,7 +5,7 @@
       <%= link_to article.title, article_path(article), class:"text-dark article-title" %>
     </h5>
     <div class="card-text article-body">
-      <%= article.description %><br/>
+      <%= (article.description.length > 50) ? (article.description.first(50) + "...") : article.description %><br/>
         
       <div class="article-meta-details">
         <% if article.categories.any? %>

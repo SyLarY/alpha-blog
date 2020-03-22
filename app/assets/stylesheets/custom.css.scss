@@ -33,31 +33,6 @@ $navbar-default-bg:#09099a;
     font-weight: bold;
 }
 
-footer {
-    margin-top: 45px;
-    padding-top: 5px;
-    border-top: 1px solid #eaeaea;
-    color: #777;
-}
-
-footer a:hover {
-    color: #222;
-}
-
-footer small {
-    float: left;
-}
-
-footer ul {
-    float: right;
-    list-style: none;
-}
-
-footer ul li {
-    float: left;
-    margin-left: 15px;
-}
-
 .article-actions {
     border-top: 1px solid #eaeaea;
     padding-top: 5px;
@@ -68,11 +43,32 @@ footer ul li {
     margin-top: 15px;
 }
 
+
+/* hover effect for title*/
+
+:root {
+    --mainColor: #ff9800;
+}
+
 .article-title {
     font-weight: bold;
     font-size: 1.5em;
-    margin-top: 10px;
+    background: linear-gradient( to bottom, var(--mainColor) 0%, var(--mainColor) 100%);
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 4px 4px;
+    color: #000;
+    text-decoration: none;
+    transition: background-size .2s;
 }
+
+.article-title:hover {
+    text-decoration: none;
+    background-size: 4px 50px;
+}
+
+
+/* end for hover effect*/
 
 .article-body {
     border-top: 1px solid #eaeaea;
@@ -83,4 +79,35 @@ footer ul li {
 .article-meta-details {
     border-top: 1px solid #eaeaea;
     margin-top: 15px;
+}
+
+.link-color {
+    color: #17a2b8;
+}
+
+a:hover {
+    color: #222;
+}
+
+
+/* Sticky Footer */
+
+html {
+    position: relative;
+    min-height: 99%;
+}
+
+body {
+    margin-bottom: 80px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 90%;
+    height: 40px;
+    line-height: 40px;
+    border-top: 1px solid #eaeaea;
+    color: #777;
 }

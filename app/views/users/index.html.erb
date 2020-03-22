@@ -5,7 +5,7 @@
 
 <% @users.each do |user| %>
     <div class="card bg-light col-sm-4 offset-sm-4 mt-2 center">
-        <h5 class="card-title article-title">
+        <h5 class="card-title mt-2">
         <%= link_to gravatar_for(user, size: 80), user_path(user) %><br/>
         <%= link_to user.username, user_path(user) %>
         </h5>
@@ -13,9 +13,9 @@
         <small><%= pluralize(user.articles.count, 'article') %> </small>
         </div>
         <% if logged_in? and current_user.admin? %>
-        <%= link_to 'Delete User', user_path(user), method: :delete, 
+        <%= link_to 'Delete', user_path(user), method: :delete, 
                                 data: {confirm: "Are you sure?"},
-                                class: "btn btn-sm btn-danger col-sm-4 offset-sm-4 my-2" %>
+                                class: "btn btn-sm btn-outline-danger col-sm-4 offset-sm-4 my-2" %>
         <% end %>
     </div>
 <% end %>

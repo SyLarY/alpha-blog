@@ -1,9 +1,9 @@
 <h2 align="center"> <%= @article.title %></h2>
 
 <div class="card bg-light col-sm-8 offset-sm-2">
-    <div class=" bg-light col-sm-4 offset-sm-4 mt-2 center">
-        <h5 class="card-title article-title">
-            <%= link_to gravatar_for(@article.user, size: 80), user_path(@article.user) %><br/>
+  <div class=" bg-light mt-2 center">
+        <h5 class="card-title mt-2">
+            <%= link_to gravatar_for(@article.user, size: 60), user_path(@article.user) %><br/>
             <%= link_to @article.user.username, user_path(@article.user) %>
         </h5>
         <div class="">
@@ -19,12 +19,12 @@
      <% end %>
      <div class="article-actions">
         <% if logged_in? && (@article.user == current_user || current_user.admin? ) %>
-            <%= link_to 'Edit article', edit_article_path(@article), class: "btn btn-sm btn-primary" %>
-            <%= link_to 'Delete this article', article_path(@article), method: :delete, 
+            <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-sm btn-outline-primary" %>
+            <%= link_to 'Delete', article_path(@article), method: :delete, 
                                                 data: {confirm: "Are you sure you want to delete the article?"},
-                                                class: "btn btn-sm btn-danger" %>
+                                                class: "btn btn-sm btn-outline-danger" %>
         
     <% end %>
-        <%= link_to 'View all articles', articles_path,  class: "btn btn-sm btn-success"%>
+        <%= link_to 'View all articles', articles_path,  class: "btn btn-sm btn-outline-info"%>
     </div>
 </div>

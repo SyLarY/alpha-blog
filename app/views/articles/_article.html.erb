@@ -6,7 +6,11 @@
     </h5>
     <div class="card-text article-body">
       <%= article.description %><br/>
+        
       <div class="article-meta-details">
+        <% if article.categories.any? %>
+          <h5 class="mt-2"><%= render article.categories %></h5>
+        <% end %>
         <small>Created by: <%= article.user.username if article.user %>
           <%= time_ago_in_words(article.created_at) %> ago,
           last updated: <%= time_ago_in_words(article.updated_at) %> ago</small>

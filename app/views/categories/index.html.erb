@@ -7,11 +7,18 @@
 <% @categories.each do |cat| %>
   <div class="card bg-light col-sm-4 offset-4 mt-2 center">
     <div class="card-title article-title">
-            <%= link_to "#{cat.name}", category_path(cat) %>
-        </div>
-        <div class="card-text mb-2">
-            <small class="text-muted"> <%= pluralize(@categories.count, 'articles')%>  </small>
-        </div>
+        <%= link_to "#{cat.name}", category_path(cat) %> 
+        <% if logged_in? and current_user.admin? %>
+            <span style="float:right">
+                <%= link_to "✘", category_path(cat), method: :delete,
+                    data: {confirm: "Are you sure?"},
+                    class: "text-danger" %>
+            </span>
+        <% end %>
+    </div>
+    <div class="card-text mb-2">
+        <small class="text-muted"> <%= pluralize(cat.articles.count, 'articles')%>  </small>
+    </div>
     </div>
 <% end %>
 

@@ -1,6 +1,13 @@
 <h1 align="center">
     <%= pluralize(Category.find(@category.id).articles.count, @category.name + ' article') %>     
 </h1>
+<div align="center">
+    <% if logged_in? and current_user.admin? %>
+        <div class="badge badge-pill bg-light">
+            <h4><%= link_to 'Edit Category', edit_category_path, class: "badge text-info"%></h4>
+        </div>
+    <% end %>
+</div>
 
 
 <div class="row col-md-2 offset-md-5 mt-5">
